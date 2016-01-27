@@ -1,0 +1,19 @@
+{
+  "name": "jeez",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "WEBPACK_ENV=build webpack",
+    "dev": "WEBPACK_ENV=dev webpack --progress --colors"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "webpack": "^1.12.12"
+  },
+  "dependencies": {
+    "lodash": "^4.0.1",
+    "three": "^0.73.2"
+  }
+}
