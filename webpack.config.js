@@ -36,7 +36,12 @@ var config = {
   },
   plugins: plugins,
   externals: {
-    "three": "three"
+    "three": {
+      root: "THREE",
+      commonjs2: 'three',
+      commonjs: 'three',
+      amd: 'three'
+    }
   }
 };
 
