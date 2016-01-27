@@ -7,7 +7,7 @@
 
 var webpack = require('webpack');
 var path = require('path');
-var libraryName = 'jeez';
+var libraryName = 'Jeez';
 
 var UglifyJsPlugin = webpack.optimize.UglifyJsPlugin;
 var env = process.env.WEBPACK_ENV;
@@ -16,9 +16,9 @@ var plugins = [], outputFile;
 
 if (env === 'build') {
   plugins.push(new UglifyJsPlugin({ minimize: true }));
-  outputFile = libraryName + '.min.js';
+  outputFile = libraryName.toLowerCase() + '.min.js';
 } else {
-  outputFile = libraryName + '.js';
+  outputFile = libraryName.toLowerCase() + '.js';
 }
 
 var config = {
