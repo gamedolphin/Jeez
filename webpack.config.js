@@ -34,15 +34,7 @@ var config = {
     root: path.resolve('./src'),
     extensions: ['', '.js']
   },
-  plugins: plugins,
-  externals: {
-    "three": {
-      root: "THREE",
-      commonjs2: 'three',
-      commonjs: 'three',
-      amd: 'three'
-    }
-  }
+  plugins: plugins
 };
 
 module.exports = config;
