@@ -3,6 +3,7 @@ require('./extendThreeObject.js');
 var Globals = require('../globals.js');
 var Renderer = require('./renderer.js');
 var DOM = require('./dom.js');
+var ScaleManager = require('./scalemanager.js');
 var World = require('./world.js');
 var Stage = require('./stage.js');
 var Timer = require('./timer.js');
@@ -37,6 +38,8 @@ Game.prototype.boot = function() {
   this.camera = new Camera(this);
   this.lights = new Lights(this);
   this.raf = new RAF(this);
+  this.scaleManager = new ScaleManager(this);
+
 
   this.renderer.init();
   this.dom.init();
@@ -47,6 +50,8 @@ Game.prototype.boot = function() {
   this.lights.init();
   this.state.init();
   this.raf.init();
+  this.scaleManager.init();
+
   this.raf.start();
 
   this.isBooted = true;
@@ -105,6 +110,7 @@ Game.prototype.update = function(time) {
 
 Game.prototype.updateLogic = function(dt) {
 
+  this.scaleManager.preUpdate();
   this.state.preUpdate();
   this.camera.preUpdate();
   this.stage.preUpdate();

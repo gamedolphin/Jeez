@@ -1,7 +1,7 @@
 var THREE = require('three');
 
 
-// TAKEN FROM COMBINED CAMERA EXAMPLE
+// TAKEN FROM COMBINED CAMERA EXAMPLE IN THREE JS
 var Camera = function(game) {
   THREE.Camera.call(this);
   this.game = game;
@@ -38,6 +38,10 @@ Camera.prototype.init = function() {
 
 Camera.prototype.preUpdate = function() {
   this.totalInView = 0;
+};
+
+Camera.prototype.setAspect = function(aspect) {
+  this.cameraP.aspect = aspect;
 };
 
 Camera.prototype.reset = function() {
