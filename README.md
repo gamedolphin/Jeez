@@ -2,7 +2,6 @@
 Game Engine with ThreeJs renderer
 
 Please check the examples folder for rudimentary usage instructions. Docs will happen when the engine feels ready.
-Examples folder also has the dev build for Jeez. 
 
 ## Build
 Run `npm install` followed by `npm run dev` or `npm run build` to generate the built library
