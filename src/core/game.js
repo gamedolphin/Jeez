@@ -10,6 +10,9 @@ var Timer = require('./timer.js');
 var Camera = require('./camera.js');
 var Lights = require('./lights.js');
 var StateManager = require('./statemanager.js');
+
+var Loader = require('../loader/loader.js');
+var Cache = require('../loader/loaderCache.js');
 var RAF = require('./raf.js');
 
 var Game = function(options) {
@@ -38,6 +41,8 @@ Game.prototype.boot = function() {
   this.camera = new Camera(this);
   this.lights = new Lights(this);
   this.raf = new RAF(this);
+  this.load = new Loader(this);
+  this.assets = new Cache(this);
   this.scaleManager = new ScaleManager(this);
 
 

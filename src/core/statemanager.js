@@ -15,6 +15,7 @@ var StateManager = function(game, pendingState) {
   this.dummy = function() {};
 
   this.onInitCallback = this.dummy;
+  this.onPreloadCallback = null;
   this.onCreateCallback = null;
   this.onPreUpdateCallback = null;
   this.onUpdateCallback = null;
@@ -103,7 +104,7 @@ StateManager.prototype = {
 
       if (valid === false)
       {
-        console.warn("Invalid Phaser State object given. Must contain at least a one of the required functions: preload, create, update or render");
+        console.warn("Invalid Jeez State object given. Must contain at least a one of the required functions: preload, create, update or render");
         return false;
       }
 
@@ -111,7 +112,7 @@ StateManager.prototype = {
     }
     else
     {
-      console.warn("Phaser.StateManager - No state found with the key: " + key);
+      console.warn("Jeez.StateManager - No state found with the key: " + key);
       return false;
     }
 
@@ -131,7 +132,21 @@ StateManager.prototype = {
         this._pendingState = null;
       }
 
-      this.loadComplete();
+
+      if(this.onPreloadCallback) {
+        this.game.load.reset();
+        this.onPreloadCallback.call(this.callbackContext, this.game);
+
+        if(this.game.load.getQueueLength() === 0) {
+          this.loadComplete();
+        }
+        else {
+          this.game.load.start();
+        }
+      }
+      else {
+        this.loadComplete();
+      }
     }
   },
 
@@ -162,6 +177,7 @@ StateManager.prototype = {
     this.link(key);
 
     this.onInitCallback = this.states[key]['init'] || this.dummy;
+    this.onPreloadCallback = this.states[key]['preload'] || null;
     this.onCreateCallback = this.states[key]['create'] || null;
     this.onPreUpdateCallback = this.states[key]['preUpdate'] || null;
     this.onUpdateCallback = this.states[key]['update'] || null;
@@ -195,6 +211,7 @@ StateManager.prototype = {
   link: function(key) {
     this.states[key].game = this.game;
     this.states[key].camera = this.game.camera;
+    this.states[key].assets = this.game.assets;
     this.states[key].state = this;
     this.states[key].stage = this.game.stage;
     this.states[key].world = this.game.world;
@@ -208,6 +225,7 @@ StateManager.prototype = {
     if(this.states[key]) {
       this.states[key].game = null;
       this.states[key].camera = null;
+      this.states[key].assets = null;
       this.states[key].state = null;
       this.states[key].stage = null;
       this.states[key].world = null;
@@ -217,6 +235,7 @@ StateManager.prototype = {
       this.states[key].key = null;
     }
   }
+
 };
 
 module.exports = StateManager;
