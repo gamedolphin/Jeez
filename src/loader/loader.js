@@ -27,6 +27,25 @@ Loader.prototype = {
     this.isLoading = false;
   },
 
+  addLoadManifest: function(manifest) {
+    var self = this;
+
+    _.each(manifest, function(obj, key) {
+      var url = "";
+      var type = obj.type || FILETYPES.Texture;
+      if(_.isString(obj)) {
+        url = obj;
+      }
+      else {
+        url = obj.url;
+      }
+      if(!url) {
+        return;
+      }
+      self.addFileToQueue(type, key, url);
+    });
+  },
+
   addFileToQueue: function(type, key, url) {
     if(this.isAlreadyQueued(url)) {
       console.warn("Already loading "+url);
@@ -64,7 +83,6 @@ Loader.prototype = {
     this.totalFiles = this._queue.length;
     this.downloadedFiles = 0;
     this.isLoading = true;
-
     this.processQueue();
   },
 

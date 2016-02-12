@@ -84,7 +84,6 @@ StateManager.prototype = {
     if (this.checkState(key))
     {
       //  Place the state in the queue. It will be started the next time the game loop begins.
-      console.log(key);
       this._pendingState = key;
       this._clearWorld = clearWorld;
       this._clearCache = clearCache;
@@ -141,7 +140,7 @@ StateManager.prototype = {
           this.loadComplete();
         }
         else {
-          this.game.load.start();
+          this.game.load.start(true);
         }
       }
       else {
@@ -217,6 +216,7 @@ StateManager.prototype = {
     this.states[key].world = this.game.world;
     this.states[key].timer = this.game.timer;
     this.states[key].lights = this.game.lights;
+    this.states[key].loader = this.game.load;
 
     this.states[key].key = key;
   },
@@ -231,6 +231,7 @@ StateManager.prototype = {
       this.states[key].world = null;
       this.states[key].timer = null;
       this.states[key].lights = null;
+      this.states[key].loader = null;
 
       this.states[key].key = null;
     }

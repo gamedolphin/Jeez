@@ -36,7 +36,6 @@ ScaleManager.prototype = {
 
   preUpdate: function() {
     if(resized && this.timer.getElapsedTime() > this.currentTime) {
-      console.log("HERE");
       var width = this.dom.domElement.offsetWidth;
       var height = this.dom.domElement.offsetHeight;
 
