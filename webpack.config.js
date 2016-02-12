@@ -14,6 +14,12 @@ var env = process.env.WEBPACK_ENV;
 
 var plugins = [], outputFile;
 
+var devPlugin = new webpack.DefinePlugin({
+  __DEV__: env !== 'build'
+});
+
+plugins.push(devPlugin);
+
 if (env === 'build') {
   plugins.push(new UglifyJsPlugin({ minimize: true }));
   outputFile = libraryName.toLowerCase() + '.min.js';

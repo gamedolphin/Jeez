@@ -84,7 +84,6 @@ StateManager.prototype = {
     if (this.checkState(key))
     {
       //  Place the state in the queue. It will be started the next time the game loop begins.
-      console.log(key);
       this._pendingState = key;
       this._clearWorld = clearWorld;
       this._clearCache = clearCache;

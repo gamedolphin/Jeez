@@ -42,6 +42,7 @@ Camera.prototype.preUpdate = function() {
 
 Camera.prototype.setAspect = function(aspect) {
   this.cameraP.aspect = aspect;
+  this.updateProjectionMatrix();
 };
 
 Camera.prototype.reset = function() {
@@ -90,6 +91,11 @@ Camera.prototype.toOrthographic = function () {
 	this.cameraO.right = halfWidth;
 	this.cameraO.top = halfHeight;
 	this.cameraO.bottom = - halfHeight;
+
+  this.left = -halfWidth;
+  this.right = halfWidth;
+  this.top = halfHeight;
+  this.bottom = halfHeight;
 
 	// this.cameraO.left = -farHalfWidth;
 	// this.cameraO.right = farHalfWidth;

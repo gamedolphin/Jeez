@@ -1,6 +1,6 @@
 var preload = function() {
-  this.game.load.addFileToQueue(Jeez.Globals.FILETYPES.Texture, 'earth', 'earthmap1k.jpg');
-  this.game.load.addFileToQueue(Jeez.Globals.FILETYPES.Texture, 'earthBump', 'earthbump1k.jpg');
+  this.game.load.addFileToQueue(Jeez.Globals.FILETYPES.Texture, 'earth', 'earthmap1k1.jpg');
+  this.game.load.addFileToQueue(Jeez.Globals.FILETYPES.Texture, 'earthBump', 'earthmapbump1k1.jpg');
   this.game.load.addFileToQueue(Jeez.Globals.FILETYPES.Texture, 'earthSpec', 'earthspec1k.jpg');
 
   this.game.load.addFileToQueue(Jeez.Globals.FILETYPES.Texture, 'earthClouds', 'earthcloudmap.png');
@@ -32,29 +32,30 @@ var create = function() {
   material.bumpMap = this.assets.getObject('earthBump');
   material.bumpScale = 0.5;
 
-  material.specularMap = this.assets.getObject('earthSpec');
+  // material.specularMap = this.assets.getObject('earthSpec');
+  material.shininess = 0;
 
   var cube = new THREE.Mesh( geometry, material );
   this.world.add(cube);
 
-  var cloudGeometry = new THREE.SphereGeometry(5.05, 32, 16);
-  var cloudMaterial = new THREE.MeshPhongMaterial({
-    map: this.assets.getObject('earthClouds'),
-    side: THREE.DoubleSide,
-    opacity: 1,
-    transparent: true,
-    depthWrite: false
-  });
+  // var cloudGeometry = new THREE.SphereGeometry(5.05, 32, 16);
+  // var cloudMaterial = new THREE.MeshPhongMaterial({
+  //   map: this.assets.getObject('earthClouds'),
+  //   side: THREE.DoubleSide,
+  //   opacity: 1,
+  //   transparent: true,
+  //   depthWrite: false
+  // });
 
-  var cloudMesh = new THREE.Mesh(cloudGeometry, cloudMaterial);
-  cube.add(cloudMesh);
+  // var cloudMesh = new THREE.Mesh(cloudGeometry, cloudMaterial);
+  // cube.add(cloudMesh);
 
   cube.position.z = -10;
-  cube.rotation.x = 23.5 * Math.PI/180;
+  // cube.rotation.x = 23.5 * Math.PI/180;
 
   this.cube = cube;
-  this.cube.cloud  = cloudMesh;
-  this.speed = 0.1;
+  // this.cube.cloud  = cloudMesh;
+  this.speed = 1;
   console.log(this.cube);
 
 
