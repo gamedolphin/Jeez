@@ -34,5 +34,6 @@ var state = {
 3. Extended `THREE.Object3D` to support `update` methods
 4. Lights, with `game.lights`
 5. Basic scalemanager
+6. Asset preloading
 
 Created mostly (copied?) by looking at what [Phaser](https://github.com/photonstorm/phaser) does, with a little bit of [Cocos2d-JS](https://github.com/cocos2d/cocos2d-x).

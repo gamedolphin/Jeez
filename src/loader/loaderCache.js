@@ -1,4 +1,5 @@
 var _ = require('lodash');
+var Logger = require('../debug/logger.js');
 
 var Cache = function(game) {
   this.game = game;
@@ -21,7 +22,7 @@ Cache.prototype = {
       return obj;
     }
     else {
-      console.warn("Object with key "+key+" not found.");
+      Logger.warn("Object with key "+key+" not found.");
       return null;
     }
   }

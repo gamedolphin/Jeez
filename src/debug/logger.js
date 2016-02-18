@@ -5,3 +5,9 @@ Logger.prototype.log = function(obj) {
     console.log(obj);
   }
 };
+
+Logger.prototype.warn = function(obj) {
+    console.warn(obj);
+};
+
+module.exports = new Logger();

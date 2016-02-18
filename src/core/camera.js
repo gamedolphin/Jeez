@@ -1,7 +1,9 @@
 var THREE = require('three');
 
-
-// TAKEN FROM COMBINED CAMERA EXAMPLE IN THREE JS
+/**
+ * TAKEN FROM COMBINED CAMERA EXAMPLE IN THREE JS
+ * @param {} game
+ */
 var Camera = function(game) {
   THREE.Camera.call(this);
   this.game = game;
@@ -26,6 +28,7 @@ var Camera = function(game) {
   this.bottom = -height/2;
   this.totalInView = 0;
 
+  // setup both cameras
   this.cameraO = new THREE.OrthographicCamera( width / - 2, width / 2, height / 2, height / - 2, 	options.orthoNear, options.orthoFar );
   this.cameraP = new THREE.PerspectiveCamera( this.fov , width / height, options.near, options.far );
   this.toPerspective();
@@ -33,8 +36,7 @@ var Camera = function(game) {
 
 Camera.prototype = Object.create(THREE.Camera.prototype);
 
-Camera.prototype.init = function() {
-};
+Camera.prototype.init = function() {};
 
 Camera.prototype.preUpdate = function() {
   this.totalInView = 0;
@@ -96,16 +98,6 @@ Camera.prototype.toOrthographic = function () {
   this.right = halfWidth;
   this.top = halfHeight;
   this.bottom = halfHeight;
-
-	// this.cameraO.left = -farHalfWidth;
-	// this.cameraO.right = farHalfWidth;
-	// this.cameraO.top = farHalfHeight;
-	// this.cameraO.bottom = -farHalfHeight;
-
-	// this.cameraO.left = this.left / this.zoom;
-	// this.cameraO.right = this.right / this.zoom;
-	// this.cameraO.top = this.top / this.zoom;
-	// this.cameraO.bottom = this.bottom / this.zoom;
 
 	this.cameraO.updateProjectionMatrix();
 

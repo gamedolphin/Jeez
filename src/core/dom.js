@@ -1,3 +1,7 @@
+/**
+ * DOM Manager for Jeez
+ * @param {} game
+ */
 var DOM = function(game) {
   this.game = game;
   this.domElement = null;

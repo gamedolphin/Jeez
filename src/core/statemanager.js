@@ -239,4 +239,6 @@ StateManager.prototype = {
 
 };
 
+StateManager.prototype.constructor = StateManager;
+
 module.exports = StateManager;

@@ -1,19 +1,29 @@
 var THREE = require('three');
 var _ = require('lodash');
 
+/**
+ * update the transform for all children
+ */
 THREE.Object3D.prototype.updateTransform = function() {
   _.each(this.children, function(child) {
     child.updateTransform();
   });
 };
 
+/**
+ * Default update functions for all THREE objects
+ */
 THREE.Object3D.prototype.preUpdate = function() {};
+THREE.Object3D.prototype.update = function() {};
 THREE.Object3D.prototype.postUpdate = function() {};
 
-THREE.Object3D.prototype.update = function() {};
 
+/**
+ * Internal update called by the stage
+ * @param {} dt
+ */
 THREE.Object3D.prototype._update = function(dt) {
-  if(this.shouldUpdate) {
+  if(this.shouldUpdate) { // trigger only if update scheduled
     this.update(dt);
   }
 
