@@ -4,6 +4,7 @@ var Stage = function(game) {
   THREE.Scene.call(this);
 
   this.game = game;
+  this.name = 'Scene';
 };
 
 Stage.prototype = Object.create(THREE.Scene.prototype);

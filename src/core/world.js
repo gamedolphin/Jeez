@@ -4,6 +4,7 @@ var Globals = require('../globals.js');
 var World = function(game) {
   THREE.Object3D.call(this);
   this.game = game;
+  this.name = 'World';
 };
 
 World.prototype = Object.create(THREE.Object3D.prototype);
