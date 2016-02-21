@@ -1,6 +1,8 @@
 require('./extendThreeObject.js');
 
 var Globals = require('../globals.js');
+var Logger = require('../debug/logger.js');
+var Info = require('../info.js');
 var Renderer = require('./renderer.js');
 var DOM = require('./dom.js');
 var ScaleManager = require('./scalemanager.js');
@@ -9,6 +11,7 @@ var Stage = require('./stage.js');
 var Timer = require('./timer.js');
 var Camera = require('./camera.js');
 var Lights = require('./lights.js');
+var Input = require('../input/input.js');
 var StateManager = require('./statemanager.js');
 
 var Loader = require('../loader/loader.js');
@@ -44,6 +47,7 @@ Game.prototype.boot = function() {
   this.load = new Loader(this);
   this.assets = new Cache(this);
   this.scaleManager = new ScaleManager(this);
+  this.input = new Input(this);
 
 
   this.renderer.init();
@@ -53,13 +57,24 @@ Game.prototype.boot = function() {
   this.timer.init();
   this.camera.init();
   this.lights.init();
+  this.input.init();
   this.state.init();
   this.raf.init();
   this.scaleManager.init();
 
+  this.showDebugHeader();
+
   this.raf.start();
 
   this.isBooted = true;
+};
+
+Game.prototype.showDebugHeader = function() {
+  var version = Info.VERSION;
+  var canvas = this.renderer.renderType === Globals.RENDERTYPE.CANVAS ?
+        'Canvas' : 'WEBGL';
+  Logger.log("Jeez! Version : "+version+" running on "+canvas);
+
 };
 
 Game.prototype.update = function(time) {
@@ -122,6 +137,7 @@ Game.prototype.updateLogic = function(dt) {
 
   this.state.update(dt);
   this.stage.update(dt);
+  this.input.update();
 
   this.stage.postUpdate();
 };

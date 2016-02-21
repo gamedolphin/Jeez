@@ -1,3 +1,9 @@
+/**
+ * @fileOverview Taken from Phaser.Signal and JS-Signals
+ * @name signal.js
+ */
+
+
 var _ = require('lodash');
 var SignalBinding = require('./signalbinding.js');
 

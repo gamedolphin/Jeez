@@ -1,4 +1,5 @@
 var THREE = require('three');
+var Globals = require('../globals.js');
 
 var webGLAvailable = function () {
 	try {
@@ -14,7 +15,10 @@ var webGLAvailable = function () {
 
 var Renderer = function(game) {
 
+  this.renderType = Globals.RENDERTYPE.CANVAS;
+
   if ( webGLAvailable() ) {
+    this.renderType = Globals.RENDERTYPE.WEBGL;
 	  THREE.WebGLRenderer.call(this);
   } else {
 	  THREE.CanvasRenderer.call(this);

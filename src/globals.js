@@ -1,4 +1,9 @@
 var Globals = {
+  RENDERTYPE: {
+    CANVAS: 0,
+    WEBGL: 1
+  },
+
   LIGHTS: {
     Ambient: 1,
     Directional: 2,
