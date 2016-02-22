@@ -57,6 +57,13 @@ Object.defineProperty(Timer.prototype, "desiredFps", {
   }
 });
 
+Object.defineProperty(Timer.prototype, "time", {
+
+  get: function () {
+    return this.getElapsedTime();
+  }
+});
+
 Timer.prototype.constructor = Timer;
 
 module.exports = Timer;
