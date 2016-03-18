@@ -9,6 +9,7 @@ var state1 = {
     cube.rotation.x = 10;
     cube.rotation.y = 10;
 
+    this.cube = cube;
     this.camera.position.z = 10;
 
     this.world.add(cube);
@@ -18,6 +19,10 @@ var state1 = {
       // switch state with state.start
       this.state.start('state2');
     }, 1000, this);
+  },
+
+  update: function(dt) {
+    this.cube.rotation.y += 1*dt;
   }
 };
 
@@ -41,7 +46,9 @@ var state2 = {
       // switch to state 1
       this.state.start('state1');
     }, 1000, this);
+
   }
+
 };
 
 window.onload = function() {
