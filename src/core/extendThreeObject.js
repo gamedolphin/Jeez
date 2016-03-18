@@ -5,7 +5,7 @@ var _ = require('lodash');
  * update the transform for all children
  */
 THREE.Object3D.prototype.updateTransform = function() {
-  _.each(this.children, function(child) {
+  _.forEach(this.children, function(child) {
     child.updateTransform();
   });
 };
@@ -27,7 +27,7 @@ THREE.Object3D.prototype._update = function(dt) {
     this.update(dt);
   }
 
-  _.each(this.children, function(child) {
+  _.forEach(this.children, function(child) {
     child._update(dt);
   });
 };
@@ -36,7 +36,7 @@ THREE.Object3D.prototype._preUpdate = function() {
   if(this.shouldUpdate) {
     this.preUpdate();
   }
-  _.each(this.children, function(child) {
+  _.forEach(this.children, function(child) {
     child._preUpdate();
   });
 };
@@ -45,7 +45,7 @@ THREE.Object3D.prototype._postUpdate = function() {
   if(this.shouldUpdate) {
     this.postUpdate();
   }
-  _.each(this.children, function(child) {
+  _.forEach(this.children, function(child) {
     child._postUpdate();
   });
 };

@@ -16,7 +16,7 @@ var Jeez = function(options){
 /**
  * Set all the global static params on the Jeez global
  */
-_.each(Globals, function(gl, key) {
+_.forEach(Globals, function(gl, key) {
   Jeez[key] = gl;
 });
 

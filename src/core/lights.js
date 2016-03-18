@@ -83,7 +83,7 @@ Lights.prototype.removeLight = function(id) {
 };
 
 Lights.prototype.removeAllLights = function() {
-  _.each(this._list, function(light) {
+  _.forEach(this._list, function(light) {
     this.game.stage.remove(light);
   });
 

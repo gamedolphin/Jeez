@@ -30,7 +30,7 @@ Loader.prototype = {
   addLoadManifest: function(manifest) {
     var self = this;
 
-    _.each(manifest, function(obj, key) {
+    _.forEach(manifest, function(obj, key) {
       var url = "";
       var type = obj.type || FILETYPES.Texture;
       if(_.isString(obj)) {
