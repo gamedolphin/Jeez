@@ -199,6 +199,7 @@ StateManager.prototype = {
       this.game.camera.reset();
       if(this._clearWorld) {
         this.game.world.shutdown();
+        this.game.input.reset(true);
         this.game.lights.removeAllLights();
         if(this._clearCache) {
           // TODO: put clear cache here when cache implemented
