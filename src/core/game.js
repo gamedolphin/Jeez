@@ -13,6 +13,7 @@ var Camera = require('./camera.js');
 var Lights = require('./lights.js');
 var Input = require('../input/input.js');
 var StateManager = require('./statemanager.js');
+var Utils = require('../utils/utils.js');
 
 var Loader = require('../loader/loader.js');
 var Cache = require('../loader/loaderCache.js');
@@ -46,6 +47,7 @@ Game.prototype.boot = function() {
   this.raf = new RAF(this);
   this.load = new Loader(this);
   this.assets = new Cache(this);
+  this.utils = new Utils(this);
   this.scaleManager = new ScaleManager(this);
   this.input = new Input(this);
 
@@ -58,6 +60,7 @@ Game.prototype.boot = function() {
   this.camera.init();
   this.lights.init();
   this.input.init();
+  this.utils.init();
   this.state.init();
   this.raf.init();
   this.scaleManager.init();

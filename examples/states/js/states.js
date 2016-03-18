@@ -14,9 +14,10 @@ var state1 = {
     this.world.add(cube);
 
     var self = this;
-    setTimeout(function() {
-      self.state.start('state2');
-    }, 1000);
+    this.utils.interval.setTimeout(function() {
+      // switch state with state.start
+      this.state.start('state2');
+    }, 1000, this);
   }
 };
 
@@ -36,9 +37,10 @@ var state2 = {
     this.world.add(sphere);
 
     var self = this;
-    setTimeout(function() {
-      self.state.start('state1');
-    }, 1000);
+    this.utils.interval.setTimeout(function() {
+      // switch to state 1
+      this.state.start('state1');
+    }, 1000, this);
   }
 };
 
@@ -46,6 +48,8 @@ window.onload = function() {
   var j = new Jeez({
     container: 'basic'
   });
+
+  // add both states
   j.state.add('state1', state1, true);
   j.state.add('state2', state2);
 };

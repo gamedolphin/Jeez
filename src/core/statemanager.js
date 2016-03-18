@@ -217,6 +217,7 @@ StateManager.prototype = {
     this.states[key].timer = this.game.timer;
     this.states[key].lights = this.game.lights;
     this.states[key].loader = this.game.load;
+    this.states[key].utils = this.game.utils;
 
     this.states[key].key = key;
   },
@@ -232,6 +233,7 @@ StateManager.prototype = {
       this.states[key].timer = null;
       this.states[key].lights = null;
       this.states[key].loader = null;
+      this.states[key].utils = null;
 
       this.states[key].key = null;
     }
